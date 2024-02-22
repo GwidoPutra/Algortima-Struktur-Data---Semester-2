@@ -17,8 +17,8 @@ public class BukuMain13 {
         bk2.terjual(11);
         bk2.tampilInformasi();
 
-        Buku13 bukuGwidoPW = new Buku13("Wikinomics", "Don Tapscott", 434, 13, 75000);
-        bukuGwidoPW.restock(14);
+        Buku13 bukuGwidoPW = new Buku13("Wikinomics", "Don Tapscott", 434, 13, 70000);
+        bukuGwidoPW.terjual(1);
         bukuGwidoPW.tampilInformasi();
 
         }
