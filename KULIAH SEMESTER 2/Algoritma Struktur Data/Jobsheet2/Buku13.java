@@ -1,7 +1,8 @@
 package Jobsheet2;
 public class Buku13 {
     String judul, pengarang;
-    int halaman, stok, harga;
+    int halaman, stok, harga, hargaTotal, hargaBayar, hargaDiskon;
+    double diskon;
 
         void tampilInformasi(){
             System.out.println("Judul: "+ judul);
@@ -9,11 +10,15 @@ public class Buku13 {
             System.out.println("Jumlah Halaman: "+ halaman);
             System.out.println("Sisa stock: "+ stok);
             System.out.println("Harga: "+ harga);
+            System.out.println("Harga total: "+ hargaTotal);
+            System.out.println("Diskon: "+ diskon);
+            System.out.println("Harga yang harus dibayarkan: "+ hargaBayar);
         }
 
         void terjual(int jml){
             stok -= jml;
-        }
+            hitungHargaTotal(jml);
+        } 
 
         void restock(int jml){
             stok+=jml;
@@ -21,6 +26,23 @@ public class Buku13 {
         
         void gantiHarga(int hrg){
             harga = hrg;
+        }
+
+        void hitungHargaTotal(int jml){
+            hargaTotal = harga * jml;
+            hitungDiskon();
+        }
+
+        void hitungDiskon(){
+            if (hargaTotal > 150000) {
+                diskon =  hargaTotal * 0.12;
+            } else if (hargaTotal >= 75000 && hargaTotal <= 150000) {
+                diskon = hargaTotal * 0.5;
+            } hitungHargaBayar();
+        }
+
+        void hitungHargaBayar(){
+            hargaBayar = (int) (hargaTotal - diskon);
         }
 
         public Buku13() {
