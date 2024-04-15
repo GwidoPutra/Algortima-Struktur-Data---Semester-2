@@ -27,11 +27,11 @@ public class Gudang13 {
         }
     }
 
-    public void tambahBarang(Barang13 brg) {
+    public void tambahBarang(Barang13 barang) {
         if (!cekPenuh()) {
             top++;
-            tumpukan[top] = brg;
-            System.out.println("Barang " + brg.nama + " berhasil ditambahkan ke gudang");
+            tumpukan[top] = barang;
+            System.out.println("Barang " + barang.nama + " berhasil ditambahkan ke gudang");
         } else {
             System.out.println("Gagal! Tumpukan barang di gudang sudah penuh");
         }
@@ -60,6 +60,35 @@ public class Gudang13 {
             return null;
         }
     }
+
+    public Barang13 lihatBarangTerbawah() {
+        if (!cekKosong()) {
+            Barang13 barangTerbawah = tumpukan[0];
+            System.out.println("Barang terbawah: " + barangTerbawah.nama);
+            return barangTerbawah;
+        } else {
+            System.out.println("Tumpukan barang kosong");
+            return null;
+        }
+    }
+
+    public Barang13 cariBarang(String search) {
+        if (!cekKosong()) {
+            for (int i = top; i >= 0; i--) {
+                Barang13 barang = tumpukan[i];
+                if (barang.nama.equalsIgnoreCase(search) || String.valueOf(barang.kode).equals(search)) {
+                    System.out.printf("Barang ditemukan: %s (Kode: %d, Kategori: %s)\n", barang.nama, barang.kode, barang.kategori);
+                    return barang;
+                }
+            }
+            System.out.println("Barang tidak ditemukan.");
+            return null;
+        } else {
+            System.out.println("Tumpukan barang kosong");
+            return null;
+        }
+    }
+    
 
     public void tampilkanBarang() {
         if (!cekKosong()) {
